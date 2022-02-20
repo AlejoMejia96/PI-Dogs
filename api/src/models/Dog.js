@@ -58,7 +58,7 @@ module.exports = (sequelize) => {
     },
 
     image : {
-      type: DataTypes.STRING(1234),
+      type: DataTypes.STRING(3000),
       allowNull: true
     },
 
