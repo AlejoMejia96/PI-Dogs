@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDogs, listOfTemperaments, filterByTemp, filterByCreated,
-orderByName } from '../actions/index';
+orderByName, orderByWeight } from '../actions/index';
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import Pagination from './Pagination';
@@ -50,6 +50,13 @@ export default function Home() {
         dispatch(orderByName(e.target.value));
         setCurrentPage(1);
     }
+
+    function handleOrderByWeight(e){
+        e.preventDefault();
+        dispatch(orderByWeight(e.target.value));
+        setCurrentPage(1);
+    }
+
     return(
         <div>
             <Link to='/dog'>Create Dog
@@ -59,9 +66,10 @@ export default function Home() {
                 Load again
             </button>
             <div>
-                <select>
-                    <option value='asc_p'>Ascendente_peso</option>
-                    <option value='desc_p'>Descendente_peso</option>
+                <select onChange={(e) => handleOrderByWeight(e)}>
+                    <option defaultValue='All'>Sort weight by</option>
+                    <option value='asc_p'>Asc. weight</option>
+                    <option value='desc_p'>Desc. weight</option>
                 </select>
                 <select onChange={(e) => handleOrderByName(e)}>
                     <option defaultValue value='All'>Sort name by</option>

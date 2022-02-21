@@ -81,7 +81,9 @@ router.get('/temperament', async (req, res) => {
                     where: {temperament: temp},
                 })
             );
-            const allTemperaments = await Temperament.findAll();
+            const allTemperaments = await Temperament.findAll({
+                order: [["temperament", "ASC"]],
+            });
             res.send(allTemperaments);
         } catch (error){
             console.log(error.message);

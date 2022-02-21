@@ -67,6 +67,28 @@ function rootReducer (state = initialState, action){
                 ...state,
                 dogs: action.payload === 'All' ? allDogggs : arrOrd
             }
+        case 'ORDER_BY_WEIGHT':
+            let allDooggs = state.allDogsEver;
+            let allFilter = state.dogs.filter(e => e.weightMin !== null);
+            let OrdMin = action.payload === 'asc_p' ?
+                allFilter.sort((a,b) => {
+                    if(a.weightMin < b.weightMin) {
+                    return -1};
+                    if(a.weightMin > b.weightMin) {
+                        return 1};
+                    return 0;
+                }) : 
+                allFilter.sort((a,b) => {
+                    if(a.weightMin > b.weightMin) {
+                        return -1};
+                    if(a.weightMin < b.weightMin) {
+                        return 1};
+                    return 0;
+                })
+            return {
+                ...state,
+                dogs: action.payload === 'All' ? allDooggs : OrdMin
+            }
         
         default:
         return state;
