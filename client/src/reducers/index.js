@@ -89,6 +89,11 @@ function rootReducer (state = initialState, action){
                 ...state,
                 dogs: action.payload === 'All' ? allDooggs : OrdMin
             }
+        case 'GET_DOGS_NAME':
+            return{
+                ...state,
+                dogs: action.payload
+            }
         
         default:
         return state;

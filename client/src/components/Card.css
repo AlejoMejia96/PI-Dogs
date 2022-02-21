@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.card {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 250px;
+    height: 360px;
+    margin-top: 15px;
+    margin-right: 30px;
+    margin-bottom: 0px;
+    margin-left: 30px;
+    border-radius: 25px;
+    padding-bottom: 17px;
+    box-sizing: content-box;  
+    background: #d8d8b1b9;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    }
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-top: 0px;
+    padding: 1px;
+    font-size: larger;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(5, 80, 68);
+    width: 100%;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card img {
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    object-fit: cover;
+    
+}
+
+.card p {
+    font-size: 14px;
+    margin: 2px;
+    padding: 3px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background: #d8d8b1b9;
+    width: 100%;
+    
+}
