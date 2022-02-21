@@ -14,29 +14,32 @@ const { getAllDogs, getDogsfromApi } = require('./controllers.js')
 
 router.get('/dogs', async (req, res) => {
     const { name } = req.query;
-    let dogsTotal = await getAllDogs();
-    if(name){
-        let dogName = await dogsTotal.filter(e => e.name.
-            toLowerCase().includes(name.toLowerCase()));
-        dogName.length ? 
-        res.status(200).send(dogName):
-        res.status(404).send('There is not a dog with that name');
-    } else {
-        res.status(200).send(dogsTotal)
+    try{
+        let dogsTotal = await getAllDogs();
+        if(name){
+            let dogName = await dogsTotal.filter(e => e.name.
+                toLowerCase().includes(name.toLowerCase()));
+            dogName.length ? 
+            res.status(200).send(dogName):
+            res.status(404).send('There is not a dog with that name');
+        } else {
+            res.status(200).send(dogsTotal)
+        }
+    } catch(error){
+        console.log(error.message);
     }
 });
 
 
 router.get('/dogs/:idRaza', async (req, res) => {
     const idRaza = req.params.idRaza;
+    
+    let dogsTotal = await getAllDogs();
     if(idRaza){
-        let dogsTotal = await getAllDogs();
-        if(dogsTotal){
-            let dogId = await dogsTotal.filter(e => e.id === idRaza);
-            dogId.length ? 
+        let dogId = await dogsTotal.filter(e => e.id == idRaza);
+        dogId.length ? 
             res.status(200).json(dogId) :
             res.status(404).send('Id does not exist')
-        }
     }
 })
 
@@ -61,7 +64,7 @@ router.get('/temperament', async (req, res) => {
             const arrayTemp = temperaments.map((temp) => 
             (temp ? temp.split(', ') : null)).flat();
 
-            /* ["Active", "Playful", "Adveturous", "Curious",
+            /* arrayTemp=["Active", "Playful", "Adveturous", "Curious",
             "Funny", "Fearless", "Brave", "Playful", 
             "Intelligent", "Stubborn"] */
             
@@ -70,7 +73,7 @@ router.get('/temperament', async (req, res) => {
 
             const temperamentUnique = [...new Set(arrayTemp)];
 
-            /* ["Active", "Playful", "Adveturous", "Curious", "Funny",
+            /* temperamentUnique=["Active", "Playful", "Adveturous", "Curious", "Funny",
             "Fearless", "Brave", "Intelligent", "Stubborn"] */
             
             temperamentUnique.filter(temp => temp !== null).forEach(
@@ -95,6 +98,10 @@ router.post('/dog', async (req, res) => {
         temperament,
         image, 
         createdInDb } = req.body;
+
+    if(!image){
+        image = 'https://media.istockphoto.com/vectors/dog-black-silhouette-isolated-on-white-background-sitting-pet-simple-vector-id1265211191?k=20&m=1265211191&s=612x612&w=0&h=S3FTUJHcxDTP5dp_qRWwmd51djcS3JOEEl_hXLIQj3g=';
+    }
 
     if(name && heightMin && heightMax && weightMin &&
         weightMax && lifespan && temperament && image){

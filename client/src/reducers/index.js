@@ -26,7 +26,7 @@ function rootReducer (state = initialState, action){
                     return e.temperament.includes(action.payload);
                 }
                 if(e.temperaments){
-                    const temp = e.temperaments.map(e => e.name);
+                    const temp = e.temperaments.map(e => e.temperament);
                     return temp.includes(action.payload);
                 }
                 return null

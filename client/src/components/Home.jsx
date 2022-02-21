@@ -73,7 +73,7 @@ export default function Home() {
                     {temperaments.length > 0 ? (
                         temperaments.map(e => {
                             return (
-                                <option value={e.name}>{e.name}</option>
+                                <option value={e.temperament}>{e.temperament}</option>
                             )
                         })
                     ) : (
