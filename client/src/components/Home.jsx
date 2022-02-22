@@ -1,19 +1,19 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, listOfTemperaments, filterByTemp, filterByCreated,
-orderByName, orderByWeight } from '../actions/index';
+import { getDogs, listOfTemperaments } from '../actions/index';
 import { Link } from 'react-router-dom';
 import Card from './Card';
 import Pagination from './Pagination';
 import Loading from './Loading';
 import SearchBar from './SearchBar';
+import Nav from './Nav';
 
 
 export default function Home() {
     const dispatch = useDispatch();
     const allDogs = useSelector ((state) => state.dogs);
-    const temperaments = useSelector((state) => state.temperaments);
+    
     const [currentPage, setCurrentPage] = useState(1);
     const [dogsPerPage] = useState(8);
     const indexOfLastDog = currentPage * dogsPerPage;
@@ -34,29 +34,6 @@ export default function Home() {
         dispatch(getDogs());
     }
 
-    function handleFilterByTemp(e){
-        e.preventDefault();
-        dispatch(filterByTemp(e.target.value));
-        setCurrentPage(1);
-    }
-
-    function handleFilterByCreated(e){
-        e.preventDefault();
-        dispatch(filterByCreated(e.target.value));
-        setCurrentPage(1);
-    }
-
-    function handleOrderByName(e){
-        e.preventDefault();
-        dispatch(orderByName(e.target.value));
-        setCurrentPage(1);
-    }
-
-    function handleOrderByWeight(e){
-        e.preventDefault();
-        dispatch(orderByWeight(e.target.value));
-        setCurrentPage(1);
-    }
 
     return(
         <div>
@@ -67,41 +44,14 @@ export default function Home() {
                 Load again
             </button>
             <div>
-                <select onChange={(e) => handleOrderByWeight(e)}>
-                    <option defaultValue='All'>Sort weight by</option>
-                    <option value='asc_p'>Asc. weight</option>
-                    <option value='desc_p'>Desc. weight</option>
-                </select>
-                <select onChange={(e) => handleOrderByName(e)}>
-                    <option defaultValue value='All'>Sort name by</option>
-                    <option value='asc_alf'>A-Z</option>
-                    <option value='desc_alf'>Z-A</option>
-                </select>
-                <select onChange={(e) => handleFilterByTemp(e)}>
-                    <option value='All'>Temperaments</option>
-                    {temperaments.length > 0 ? (
-                        temperaments.map(e => {
-                            return (
-                                <option value={e.temperament}>{e.temperament}</option>
-                            )
-                        })
-                    ) : (
-                            <div>
-                                <Loading/>
-                            </div>
-                    )};
-                </select>
-                <select onChange={(e) => handleFilterByCreated(e)}>
-                    <option value='all_dogs'>All Dogs</option>
-                    <option value='dog_api'>API</option>
-                    <option value='dog_db'>DB</option>
-                </select>
+            <Nav />
+            <SearchBar />
             <Pagination
                 dogsPerPage={dogsPerPage}
                 allDogs={allDogs.length}
                 paginate={paginate}
+                currentPage={currentPage}
             />
-            <SearchBar />
             {currentDog.length > 0 ? (
                 currentDog.map(e => {
                     return(

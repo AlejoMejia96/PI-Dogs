@@ -1,0 +1,86 @@
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDogs, listOfTemperaments, filterByTemp, filterByCreated,
+    orderByName, orderByWeight } from '../actions/index';
+import Loading from './Loading';
+
+export default function Nav(){
+    const dispatch = useDispatch();
+    const temperaments = useSelector((state) => state.temperaments);
+    const [, setCurrentPage] = useState(1);
+
+    useEffect (() => {
+        dispatch(listOfTemperaments());
+        dispatch(getDogs());
+    }, [dispatch]);
+
+    function handleFilterByCreated(e){
+        e.preventDefault();
+        dispatch(filterByCreated(e.target.value));
+        setCurrentPage(1);
+    }
+
+    function handleFilterByTemp(e){
+        e.preventDefault();
+        dispatch(filterByTemp(e.target.value));
+        setCurrentPage(1);
+    }
+
+    function handleOrderByName(e){
+        e.preventDefault();
+        dispatch(orderByName(e.target.value));
+        setCurrentPage(1);
+    }
+
+    function handleOrderByWeight(e){
+        e.preventDefault();
+        dispatch(orderByWeight(e.target.value));
+        setCurrentPage(1);
+    }
+
+    return(
+        <div>
+            <select onChange={(e) => handleOrderByWeight(e)}>
+                <option defaultValue value='All'>Sort weight by</option>
+                <option value='asc_p'>Asc. weight</option>
+                <option value='desc_p'>Desc. weight</option>
+            </select>
+            <select onChange={(e) => handleOrderByName(e)}>
+                <option defaultValue value='All'>Sort name by</option>
+                <option value='asc_alf'>A-Z</option>
+                <option value='desc_alf'>Z-A</option>
+            </select>
+            <select onChange={(e) => handleFilterByTemp(e)}>
+                <option value='All'>Temperaments</option>
+                {temperaments.length > 0 ? (
+                    temperaments.map(e => {
+                        return (
+                            <option value={e.temperament}>{e.temperament}</option>
+                        )
+                    })
+                ) : (
+                        <div>
+                            <Loading/>
+                        </div>
+                )};
+            </select>
+            <select onChange={(e) => handleFilterByCreated(e)}>
+                <option defaultValue value='all_dogs'>All Dogs</option>
+                <option value='dog_api'>API</option>
+                <option value='dog_db'>DB</option>
+            </select>
+        </div>
+    )
+
+
+
+
+
+
+
+
+
+
+
+}

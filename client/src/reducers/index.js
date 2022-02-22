@@ -47,8 +47,8 @@ function rootReducer (state = initialState, action){
                 dogs: action.payload === 'all_dogs' ? state.allDogsEver : filterCreated
             }
         case 'ORDER_BY_NAME':
-            let allDogggs = state.allDogsEver;
-            let arrOrd = action.payload === 'asc_alf' ?
+            const allDogggs = state.allDogsEver;
+            const arrOrd = action.payload === 'asc_alf' ?
                 [...state.dogs].sort((a,b) => {
                     if(a.name < b.name) {
                         return -1};
@@ -68,9 +68,9 @@ function rootReducer (state = initialState, action){
                 dogs: action.payload === 'All' ? allDogggs : arrOrd
             }
         case 'ORDER_BY_WEIGHT':
-            let allDooggs = state.allDogsEver;
-            let allFilter = state.dogs.filter(e => e.weightMin !== null);
-            let OrdMin = action.payload === 'asc_p' ?
+            const allDooggs = state.allDogsEver;
+            const allFilter = state.dogs.filter(e => e.weightMin !== null);
+            const OrdMin = action.payload === 'asc_p' ?
                 allFilter.sort((a,b) => {
                     if(a.weightMin < b.weightMin) {
                     return -1};
