@@ -35,7 +35,7 @@ function rootReducer (state = initialState, action){
                 ...state,
                 dogs: temDogFiltred
             }
-        case 'POST_DOGS':
+        case 'POST_DOG':
             return{
                 ...state,
             }

@@ -61,5 +61,12 @@ export function getNameDogs(name){
             return alert('Breed not found. Try again')
         }
     }
+}
 
+export function postDog(payload){
+    return async function(dispatch){
+        var json = await axios.post('http://localhost:3001/dog', payload);
+        console.log(json)
+        return json;
+    }
 }
