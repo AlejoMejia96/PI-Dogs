@@ -1,0 +1,7 @@
+.home {
+    background: url('https://images.unsplash.com/photo-1515870672913-a4c298575776?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80') no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}

@@ -4,17 +4,17 @@
     margin: 20px;
   border-style: solid;
   border-radius: 20px;
-  border-color: rgb(4, 59, 57);
+  border-color: rgb(40, 124, 121);
   height: 400px;
   width: 270px;
   flex-wrap: wrap;
   display: inline-block;
-  background: linear-gradient(45deg, rgb(1, 12, 11), rgb(4, 59, 57));
-  box-shadow: 5px 5px 10px rgb(4, 59, 57);
+  background: rgb(40, 124, 121);
+  box-shadow: 3px 3px 3px rgb(40, 124, 121);
 }
 
 .card:hover {
     transform: scale(1.1);
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 5px 20px rgb(40, 124, 121);
     }
 

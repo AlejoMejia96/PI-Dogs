@@ -4,14 +4,14 @@ import './LandingPage.css';
 
 export default function LandingPage (){
     return(
-        <div className='fondo'>
+
+    <div className='land'>
             <div className='title'>
-            <h1>Bienvenidos</h1>
-            <Link to='/home'>
-                <button>Ir a Home</button>
-            </Link>
-        </div>
-        </div>
-        
+                <h1 className='intro'>Welcome to my Dogs App!</h1>
+                <Link to='/home'>
+                    <button className='bot'style={{cursor: 'pointer'}}>Home</button>
+                </Link>
+            </div>
+    </div>
     );
 }

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDogs, listOfTemperaments } from '../actions/index';
 import { Link } from 'react-router-dom';
+import './Home.css';
 import Card from './Card';
 import Pagination from './Pagination';
 import Loading from './Loading';
@@ -36,9 +37,8 @@ export default function Home() {
 
 
     return(
-        <div>
+        <div className='home'>
             <Link to='/dog'>Create Dog
-                <h1>Dogs rules</h1>
             </Link>
             <button onClick={e => handleClick(e)}>
                 Load again
