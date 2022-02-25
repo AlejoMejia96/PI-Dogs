@@ -56,6 +56,7 @@ export default function Home() {
                 currentDog.map(e => {
                     return(
                     <Card 
+                        id={e.id}
                         name={e.name} 
                         image={e.image} 
                         temperament={`Temperaments: ${e.temperament}`}

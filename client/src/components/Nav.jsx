@@ -72,15 +72,4 @@ export default function Nav(){
             </select>
         </div>
     )
-
-
-
-
-
-
-
-
-
-
-
 }
