@@ -1,7 +1,111 @@
 .home {
-    background: url('https://images.unsplash.com/photo-1515870672913-a4c298575776?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80') no-repeat;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
+    /* background: url('https://img.freepik.com/free-photo/white-texture_1160-786.jpg?t=st=1645829787~exp=1645830387~hmac=1666a78be5e053376155c223ede0182394f0c562b7ae23ede548522b14a23864&w=740'); */
+    background: url('https://img.freepik.com/free-vector/pets-paw-pattern-bones-animal-footsteps-seamless-texture_81894-4406.jpg?size=338&ext=jpg&ga=GA1.2.396143805.1645809728');
+    overflow: scroll;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background-size: cover; */
+    background-repeat: repeat;
+    background-position: center center;
+    background-attachment: fixed;
+/*     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -moz-background-size: cover; */
+
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    box-sizing: content-box;
+}
+
+.created_dog {
+    width: 300px;
+    height: 50px;
+}
+
+.crea {
+    margin: 20px;
+  position: relative;
+  width: 150px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.crea:hover{
+  transform: scale(1.1);
+}
+.c1, .c2, .c3, .c4{
+    background:rgba(231, 146, 49);
+    height: 30px;
+    width: 30px;
+    /* border: 1px solid rgba(228, 124, 5, 0.9); */
+    border-radius: 50%;
+    position:absolute;
+  }
+  .c1{
+    left: 0;
+    top: 0;
+  }
+  .c2{
+    right: 0;
+    top: 0;
+  }
+  .c3{
+    left: 0;
+    bottom: 0;
+  }
+  .c4{
+    bottom: 0;
+    right: 0;
+  }
+  .b1 {
+    background: rgba(231, 146, 49);
+    height: 30px;
+    width: 120px;
+    position: absolute;  
+    left: 15px;
+    top: 15px;
+  }
+  .b2 {
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    position: absolute;
+    left: 15px;
+    top: 0;
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    /* border-top: 1px solid rgba(228, 124, 5, 0.9); */
+    /* border-bottom: 1px solid rgba(228, 124, 5, 0.9); */
+    text-align: center;
+    color: white;
+    font-size:16.8px;
+    font-weight: bolder;
+  }
+
+
+.load {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 100px;
+}
+
+
+.search {
+    margin: 10px;
+}
+
+.navig {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pagin {
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }

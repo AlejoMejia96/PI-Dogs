@@ -38,33 +38,52 @@ export default function Home() {
 
     return(
         <div className='home'>
-            <Link to='/dog'>Create Dog
-            </Link>
-            <button onClick={e => handleClick(e)}>
-                Load again
-            </button>
-            <div>
-            <Nav />
-            <SearchBar />
-            <Pagination
-                dogsPerPage={dogsPerPage}
-                allDogs={allDogs.length}
-                paginate={paginate}
-                currentPage={currentPage}
-            />
-            {currentDog.length > 0 ? (
-                currentDog.map(e => {
-                    return(
-                    <Card 
-                        id={e.id}
-                        name={e.name} 
-                        image={e.image} 
-                        temperament={`Temperaments: ${e.temperament}`}
-                        weightMin={`Weight Min: ${e.weightMin} kg.`}
-                        weightMax={`Weight Max: ${e.weightMax} kg.`}
-                    />
-                    );
-                }) 
+            <div className='create_dog'>
+                <Link to='/dog'>
+                    <button className='crea'>
+                        <div class="c1"></div>
+                        <div class="c2"></div>
+                        <div class="c3"></div>
+                        <div class="c4"></div>
+                        <div class="b1">
+                            <div class="b2">
+                            Create Dog
+                            </div>
+                        </div>
+                    </button>
+                </Link>
+            </div>
+            <div className='load'>
+                <button onClick={e => handleClick(e)}>Refresh</button>
+            </div>
+            <div className='search'>
+                <SearchBar />
+            </div>
+            <div className='navig'>
+                <Nav />
+            </div>
+            <div className='pagin'>
+                <Pagination
+                    dogsPerPage={dogsPerPage}
+                    allDogs={allDogs.length}
+                    paginate={paginate}
+                    currentPage={currentPage}
+                />
+            </div>
+            <div className='cards'>
+                {currentDog.length > 0 ? (
+                    currentDog.map(e => {
+                        return (
+                            <Card 
+                                id={e.id}
+                                name={e.name} 
+                                image={e.image} 
+                                temperament={`Temperaments: ${e.temperament}`}
+                                weightMin={`Weight Min: ${e.weightMin} kg.`}
+                                weightMax={`Weight Max: ${e.weightMax} kg.`}
+                            />
+                            );
+                        })
                 ) : (
                         <div>
                             <Loading/>
@@ -72,5 +91,5 @@ export default function Home() {
                     )}
             </div>
         </div>
-    )
+    );
 }

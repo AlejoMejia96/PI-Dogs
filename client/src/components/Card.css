@@ -2,19 +2,45 @@
 
 .card {
     margin: 20px;
-  border-style: solid;
-  border-radius: 20px;
-  border-color: rgb(40, 124, 121);
-  height: 400px;
+  border-style: 2px solid rgba(228, 124, 5);
+  border-radius: 30px;
+  border-color: transparent;
+  /* background: url('https://img.freepik.com/free-vector/seamless-pattern-cute-dog-puppy-symbol-toy-paw-footstep-cartoon-funny-happy-dog-concept-with-simple-shape-style-illustration-background-wallpaper-textile-fabric_253081-200.jpg?w=740'); */
+  /* background-position: -110px 30px; */
+  background-position: 50px -80px;
+  /* background-color: transparent; */
+  /* background-color: rgba(134, 24, 24, 0.9); */
+  background-color: rgba(231, 146, 49, 0.9);
+  cursor: pointer;
+  height: 430px;
   width: 270px;
-  flex-wrap: wrap;
   display: inline-block;
-  background: rgb(40, 124, 121);
-  box-shadow: 3px 3px 3px rgb(40, 124, 121);
+  /* box-shadow: 3px 3px 3px rgba(110, 26, 26); */
+  box-shadow: 3px 3px 3px rgba(228, 124, 5, 0.9);
 }
 
 .card:hover {
-    transform: scale(1.1);
-    box-shadow: 5px 5px 20px rgb(40, 124, 121);
+    transform: scale(1.05);
+    box-shadow: 5px 5px 20px rgba(110, 26, 26);
+    box-shadow: 3px 3px 3px rgba(228, 124, 5, 0.9);
     }
 
+h3 {
+  font-size: larger;
+}
+
+.image {
+  border-radius: 10px;
+  object-fit: cover;
+  width: 250px;
+}
+
+.temwei {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
