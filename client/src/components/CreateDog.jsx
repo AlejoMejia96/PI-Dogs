@@ -32,6 +32,9 @@ export default function CreateDog(){
         if(!input.name){
             error.name = 'Name is required';
         }
+        else if(!/^[a-zA-Z: -_!'&()]+$/.test(input.name)) {
+            error.name = "Invalid character";
+        }
         if(!input.heightMin){
             error.heightMin = 'Height Min is required';
         }
@@ -66,6 +69,9 @@ export default function CreateDog(){
         }
         if(input.lifespan < 0){
             error.lifespan = 'Must be greater than 0';
+        }
+        if (!/(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(input.image)) {
+            error.image = "Invalid link image";
         }
         return error;
     }
@@ -122,123 +128,123 @@ export default function CreateDog(){
 
     return (
         <div className='create'>
-            <Link to= '/home'><button>Go back</button></Link>
-            <h1>Create Dog!</h1>
-
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <h2>Name</h2>
-                    <input
-                    type='text'
-                    value={input.name}
-                    placeholder='Enter name without numbers or symbols'
-                    name='name'
-                    onChange={(e) => handleChangeInput(e)}
-                    autoComplete="off"
-                    />
-                    {error.name && <p>{error.name}</p>}
-                </div>
-                <div>
-                    <h2>Height</h2>
-                    <label>Min:</label>
-                    <input
-                    type='text'
-                    value={input.heightMin}
-                    placeholder='Enter integers only'
-                    name='heightMin'
-                    onChange={(e) => handleChangeInput(e)}
-                    autoComplete="off"
-                    />
-                    {error.heightMin && <p>{error.heightMin}</p>}
-                    <label>Max:</label>
-                    <input
-                    type='text'
-                    value={input.heightMax}
-                    placeholder='Enter integers only'
-                    name='heightMax'
-                    onChange={(e) => handleChangeInput(e)}
-                    autoComplete="off"
-                    />
-                    {error.heightMax && <p>{error.heightMax}</p>}
-                </div>
-                <div>
-                    <h2>Weight</h2>
-                    <label>Min:</label>
-                    <input
-                    type='text'
-                    value={input.weightMin}
-                    placeholder='Enter integers only'
-                    name='weightMin'
-                    onChange={(e) => handleChangeInput(e)}
-                    autoComplete="off"
-                    />
-                    {error.weightMin && <p>{error.weightMin}</p>}
-                    <label>Max:</label>
-                    <input
-                    type='text'
-                    value={input.weightMax}
-                    placeholder='Enter integers only'
-                    name='weightMax'
-                    onChange={(e) => handleChangeInput(e)}
-                    autoComplete="off"
-                    />
-                    {error.weightMax && <p>{error.weightMax}</p>}
-                </div>
-                <div>
-                    <h2>Lifespan</h2>
-                    <input
-                    type='text'
-                    value={input.lifespan}
-                    placeholder='Enter lifespan'
-                    name='lifespan'
-                    onChange={(e) => handleChangeInput(e)}
-                    autoComplete="off"
-                    />
-                    {error.lifespan && <p>{error.lifespan}</p>}
-                </div>
-                <div>
-                    <h2>Image</h2>
-                    <input
-                    type='text'
-                    value={input.image}
-                    placeholder='Enter image url'
-                    name='image'
-                    onChange={(e) => handleChangeInput(e)}
-                    autoComplete="off"
-                    />
-                </div>
-                <div>
-                    <h2>Temperaments</h2>
-                    <select onChange={(e) => handleSelect(e)}>
-                        {temperaments?.map((temp) => {
-                            return(
-                                <option 
-                                key={temp.id} 
-                                value={temp.temperament}>
-                                {temp.temperament}</option>
-                            );
-                        })}
-                    </select>
-                    <div>
-                        {input.temperament.map(tem =>
-                            <div key={tem}>
-                                <h3>{tem}</h3>
-                                <button onClick={() => handleDelete(tem)}>X
-                                </button>
-                            </div>
-                            )}
+            <form className='form' onSubmit={(e) => handleSubmit(e)}>
+                <div style={{width: '50%', float: 'left'}}> 
+                    <div className='nombre'>
+                        <h2 className='tnom'>Name</h2>
+                        <input className='nom'
+                        type='text'
+                        value={input.name}
+                        placeholder='Enter name without numbers or symbols'
+                        name='name'
+                        onChange={(e) => handleChangeInput(e)}
+                        autoComplete="off"
+                        />
+                        {error.name && <p className='err'>{error.name}</p>}
+                    </div>
+                    <div  className='altmin'>
+                        <h2 className='taltmin'>Height</h2>
+                        <span>
+                            <label>Min </label>
+                            <input className='amin'
+                            type='text'
+                            value={input.heightMin}
+                            placeholder='Enter integers only'
+                            name='heightMin'
+                            onChange={(e) => handleChangeInput(e)}
+                            autoComplete="off"
+                            />
+                            <label>Max </label>
+                            <input className='amax'
+                            type='text'
+                            value={input.heightMax}
+                            placeholder='Enter integers only'
+                            name='heightMax'
+                            onChange={(e) => handleChangeInput(e)}
+                            autoComplete="off"
+                            />
+                        </span>
+                        {error.heightMin && <p className='err'>{error.heightMin}</p>}
+                        {error.heightMax && <p className='err'>{error.heightMax}</p>}
+                    </div>
+                    <div className='pemin'>
+                        <h2 className='tpemin'>Weight</h2>
+                        <span>
+                            <label>Min </label>
+                            <input className='pmin'
+                            type='text'
+                            value={input.weightMin}
+                            placeholder='Enter integers only'
+                            name='weightMin'
+                            onChange={(e) => handleChangeInput(e)}
+                            autoComplete="off"
+                            />
+                            <label>Max </label>
+                            <input className='pmax'
+                            type='text'
+                            value={input.weightMax}
+                            placeholder='Enter integers only'
+                            name='weightMax'
+                            onChange={(e) => handleChangeInput(e)}
+                            autoComplete="off"
+                            />
+                        </span>
+                        {error.weightMin && <p className='err'>{error.weightMin}</p>}
+                        {error.weightMax && <p className='err'>{error.weightMax}</p>}
+                    </div>
+                    <div className='lifes'>
+                        <h2 className='tlifes'>Lifespan</h2>
+                        <input className='life'
+                        type='text'
+                        value={input.lifespan}
+                        placeholder='Enter lifespan'
+                        name='lifespan'
+                        onChange={(e) => handleChangeInput(e)}
+                        autoComplete="off"
+                        />
+                        {error.lifespan && <p>{error.lifespan}</p>}
                     </div>
                 </div>
+                <div style={{width: '50%', float: 'right'}}>
+                    <div className='image'>
+                        <h2 className='timag'>Image</h2>
+                        <input className='imag'
+                        type='text'
+                        value={input.image}
+                        placeholder='Enter image url'
+                        name='image'
+                        onChange={(e) => handleChangeInput(e)}
+                        autoComplete="off"
+                        />
+                    </div>
+                    <div>
+                        <h2>Temperaments</h2>
+                        <select onChange={(e) => handleSelect(e)}>
+                            {temperaments?.map((temp) => {
+                                return(
+                                    <option 
+                                    key={temp.id} 
+                                    value={temp.temperament}>
+                                    {temp.temperament}</option>
+                                );
+                            })}
+                        </select>
+                        <div>
+                            {input.temperament.map(tem =>
+                                <div key={tem}>
+                                    <h3>{tem}</h3>
+                                    <button onClick={() => handleDelete(tem)}>X
+                                    </button>
+                                </div>
+                                )}
+                        </div>
+                    </div>
+                </div> 
+                <span> 
+                <Link to= '/home'><button>Go back</button></Link>          
                 <button type='submit' disabled={Object.keys(error).length > 0 ? true : false}>Create</button>
+                </span>
             </form>
         </div>
     );
-
-
-
-
-
-
-
-
 }

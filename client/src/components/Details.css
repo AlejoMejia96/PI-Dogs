@@ -1,0 +1,49 @@
+.detal {
+    /* background: url('https://img.freepik.com/free-photo/white-texture_1160-786.jpg?t=st=1645829787~exp=1645830387~hmac=1666a78be5e053376155c223ede0182394f0c562b7ae23ede548522b14a23864&w=740'); */
+    background: url('https://img.freepik.com/free-vector/pets-paw-pattern-bones-animal-footsteps-seamless-texture_81894-4406.jpg?size=338&ext=jpg&ga=GA1.2.396143805.1645809728');
+    overflow: scroll;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background-size: cover; */
+    background-repeat: repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+.det {
+    height: 500px;
+    width: 800px;
+    margin: 20px;
+    color: white;
+    background-color: rgba(231, 146, 49, 0.9);
+    box-shadow: 3px 3px 3px rgba(228, 124, 5, 0.9);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+
+img {
+    border-radius: 20px;
+}
+
+.botback {
+    margin-top: 20px;
+    height: 60px;
+    width: 60px;
+    color: white;
+    background-color: rgba(231, 146, 49, 0.9);
+    border-color: rgba(228, 124, 5);
+    border-radius: 50%;
+    border-style: solid;
+    font-size: medium;
+    font-weight: bolder;
+    font:  normal bold 16px/1 "Ubuntu", sans-serif;
+    cursor: pointer;
+}
+
+.botback:hover {
+    transform: scale(1.1);
+}

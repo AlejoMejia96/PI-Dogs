@@ -1,18 +1,12 @@
 .home {
-    /* background: url('https://img.freepik.com/free-photo/white-texture_1160-786.jpg?t=st=1645829787~exp=1645830387~hmac=1666a78be5e053376155c223ede0182394f0c562b7ae23ede548522b14a23864&w=740'); */
     background: url('https://img.freepik.com/free-vector/pets-paw-pattern-bones-animal-footsteps-seamless-texture_81894-4406.jpg?size=338&ext=jpg&ga=GA1.2.396143805.1645809728');
     overflow: scroll;
     top: 0;
     width: 100vw;
     height: 100vh;
-    /* background-size: cover; */
     background-repeat: repeat;
     background-position: center center;
     background-attachment: fixed;
-/*     -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -moz-background-size: cover; */
-
 }
 
 .cards {
@@ -28,7 +22,8 @@
 }
 
 .crea {
-    margin: 20px;
+    margin-top: 30px;
+    margin-bottom: 0px;
   position: relative;
   width: 150px;
   height: 60px;
@@ -43,7 +38,7 @@
     background:rgba(231, 146, 49);
     height: 30px;
     width: 30px;
-    /* border: 1px solid rgba(228, 124, 5, 0.9); */
+    border: 2px solid rgba(228, 124, 5, 0.9);
     border-radius: 50%;
     position:absolute;
   }
@@ -65,33 +60,33 @@
   }
   .b1 {
     background: rgba(231, 146, 49);
-    height: 30px;
+    height: 32px;
     width: 120px;
     position: absolute;  
     left: 15px;
     top: 15px;
   }
   .b2 {
-    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
     position: absolute;
     left: 15px;
     top: 0;
     width: 90px;
     height: 30px;
     line-height: 30px;
-    /* border-top: 1px solid rgba(228, 124, 5, 0.9); */
-    /* border-bottom: 1px solid rgba(228, 124, 5, 0.9); */
+    border-top: 2px solid rgba(228, 124, 5, 0.9);
+    border-bottom: 2px solid rgba(228, 124, 5, 0.9);
     text-align: center;
     color: white;
     font-size:16.8px;
     font-weight: bolder;
+    
   }
 
 
 .load {
     display: flex;
     justify-content: flex-end;
-    margin-right: 100px;
+    margin-right: 150px;
 }
 
 
@@ -108,4 +103,23 @@
     display:flex;
     justify-content: center;
     align-items: center;
+}
+
+.ref {
+  background:    rgba(231, 146, 49, 0.9);
+border:        2px solid rgba(228, 124, 5, 0.9);
+border-radius: 50%;
+box-shadow:    rgba(228, 124, 5, 0.9);
+padding:       10px 4px;
+color:         #ffffff;
+display:       inline-block;
+font:          normal bold 16px/1 "Ubuntu", sans-serif;
+text-align:    center;
+width: 70px;
+height: 70px;
+cursor: pointer;
+}
+
+.ref:hover {
+  transform: scale(1.1);
 }

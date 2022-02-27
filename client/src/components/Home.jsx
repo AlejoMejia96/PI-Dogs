@@ -54,7 +54,8 @@ export default function Home() {
                 </Link>
             </div>
             <div className='load'>
-                <button onClick={e => handleClick(e)}>Refresh</button>
+                <button onClick={e => handleClick(e)}
+                className='ref'>Refresh</button>
             </div>
             <div className='search'>
                 <SearchBar />

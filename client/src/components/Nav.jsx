@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDogs, listOfTemperaments, filterByTemp, filterByCreated,
     orderByName, orderByWeight } from '../actions/index';
 import Loading from './Loading';
+import './Nav.css';
 
 export default function Nav(){
     const dispatch = useDispatch();
@@ -40,18 +41,18 @@ export default function Nav(){
     }
 
     return(
-        <div>
-            <select onChange={(e) => handleOrderByWeight(e)}>
+        <div className='fltros'>
+            <select className='peso' onChange={(e) => handleOrderByWeight(e)}>
                 <option defaultValue value='All'>Sort weight by</option>
                 <option value='asc_p'>Asc. weight</option>
                 <option value='desc_p'>Desc. weight</option>
             </select>
-            <select onChange={(e) => handleOrderByName(e)}>
+            <select className='alfab' onChange={(e) => handleOrderByName(e)}>
                 <option defaultValue value='All'>Sort name by</option>
                 <option value='asc_alf'>A-Z</option>
                 <option value='desc_alf'>Z-A</option>
             </select>
-            <select onChange={(e) => handleFilterByTemp(e)}>
+            <select className='temper' onChange={(e) => handleFilterByTemp(e)}>
                 <option value='All'>Temperaments</option>
                 {temperaments.length > 0 ? (
                     temperaments.map(e => {
@@ -65,7 +66,7 @@ export default function Nav(){
                         </div>
                 )};
             </select>
-            <select onChange={(e) => handleFilterByCreated(e)}>
+            <select className='todos' onChange={(e) => handleFilterByCreated(e)}>
                 <option defaultValue value='all_dogs'>All Dogs</option>
                 <option value='dog_api'>API</option>
                 <option value='dog_db'>DB</option>
