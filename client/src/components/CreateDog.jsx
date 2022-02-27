@@ -32,7 +32,7 @@ export default function CreateDog(){
         if(!input.name){
             error.name = 'Name is required';
         }
-        else if(!/^[a-zA-Z: -_!'&()]+$/.test(input.name)) {
+        if(!/^[a-zA-Z: -_!'&()]+$/.test(input.name)) {
             error.name = "Invalid character";
         }
         if(!input.heightMin){
@@ -70,9 +70,6 @@ export default function CreateDog(){
         if(input.lifespan < 0){
             error.lifespan = 'Must be greater than 0';
         }
-        if (!/(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(input.image)) {
-            error.image = "Invalid link image";
-        }
         return error;
     }
 
@@ -98,7 +95,6 @@ export default function CreateDog(){
 
     function handleDelete(e){
         setInput({
-            ...input,
             temperament: input.temperament.filter(tem => tem !== e)
         });
     }
@@ -204,6 +200,12 @@ export default function CreateDog(){
                         />
                         {error.lifespan && <p>{error.lifespan}</p>}
                     </div>
+                    <div>
+                        <span> 
+                        <Link to= '/home'><button className='goback'>Go back</button></Link>          
+                        <button className='guardar' type='submit' disabled={Object.keys(error).length > 0 ? true : false}>Create</button>
+                        </span>
+                    </div>
                 </div>
                 <div style={{width: '50%', float: 'right'}}>
                     <div className='image'>
@@ -217,9 +219,9 @@ export default function CreateDog(){
                         autoComplete="off"
                         />
                     </div>
-                    <div>
-                        <h2>Temperaments</h2>
-                        <select onChange={(e) => handleSelect(e)}>
+                    <div className='temperi'>
+                        <h2 className='temps'>Temperaments</h2> <br/>
+                        <select className='temp' onChange={(e) => handleSelect(e)}>
                             {temperaments?.map((temp) => {
                                 return(
                                     <option 
@@ -229,21 +231,17 @@ export default function CreateDog(){
                                 );
                             })}
                         </select>
-                        <div>
+                        <div className='ts'>
                             {input.temperament.map(tem =>
-                                <div key={tem}>
+                                <span key={tem}>
                                     <h3>{tem}</h3>
-                                    <button onClick={() => handleDelete(tem)}>X
+                                    <button className='btncre' onClick={() => handleDelete(tem)}>X
                                     </button>
-                                </div>
+                                </span>
                                 )}
                         </div>
                     </div>
                 </div> 
-                <span> 
-                <Link to= '/home'><button>Go back</button></Link>          
-                <button type='submit' disabled={Object.keys(error).length > 0 ? true : false}>Create</button>
-                </span>
             </form>
         </div>
     );

@@ -156,3 +156,81 @@
     font:  normal bold 16px/1 "Ubuntu", sans-serif;
     margin-bottom: 0px;
 }
+
+.temperi {
+    margin: 10px;
+    width: 500px;
+    background-color: transparent;
+}
+
+.temps {
+    margin: 0px;
+    padding: 3px;
+}
+
+.temp {
+    height: 25px;
+    width: 150px;
+    color: white;
+    background-color: rgba(231, 146, 49, 0.9);
+    border-color: rgba(228, 124, 5);
+    border-radius: 5px;
+    border-style: 2px solid;
+    font-size: medium;
+    font-weight: bolder;
+    font:  normal bold 16px/1 "Ubuntu", sans-serif;
+    cursor: pointer;
+    margin-right: 35px;
+}
+
+.ts {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btncre {
+    background:    rgba(231, 146, 49, 0.9);
+    color: white;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    padding: 0px;
+    border: 2px solid rgba(228, 124, 5, 0.9);
+    box-shadow:    rgba(228, 124, 5, 0.9);
+    cursor: pointer;
+}
+
+.btncre:hover {
+    transform: scale(1.1);
+}
+
+.goback {
+    height: 40px;
+    width: 80px;
+    color: white;
+    background-color: rgba(231, 146, 49);
+    border-color: rgba(228, 124, 5);
+    border-radius: 20px;
+    border-style: solid;
+    font-size: medium;
+    font-weight: bolder;
+    font:  normal bold 16px/1 "Ubuntu", sans-serif;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.guardar {
+    height: 40px;
+    width: 80px;
+    color: white;
+    background-color: rgba(228, 124, 5, 0.9);
+    border-color: rgba(228, 124, 5);
+    border-radius: 20px;
+    border-style: solid;
+    font-size: medium;
+    font-weight: bolder;
+    font:  normal bold 16px/1 "Ubuntu", sans-serif;
+    cursor: pointer;
+}
