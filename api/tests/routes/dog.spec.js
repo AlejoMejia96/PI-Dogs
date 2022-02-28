@@ -9,7 +9,7 @@ const dog = {
   name: 'Pug',
 };
 
-describe('Videogame routes', () => {
+describe('Dog routes', () => {
   before(() => conn.authenticate()
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
@@ -18,7 +18,11 @@ describe('Videogame routes', () => {
     .then(() => Dog.create(dog)));
   describe('GET /dogs', () => {
     it('should get 200', () =>
-      agent.get('/dogs').expect(200)
+      agent.get('/dogs')
+      .expect(200)
+      .except((res) => {
+        expect(res.body).toEqual(dogName)
+      })
     );
   });
 });
