@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       validate: {
         is:  {
           args: /^[a-zA-Z\s]*$/,
-          msg: 'Must be contains letters and spaces only'
+          msg: 'Must contain letters and spaces only'
         } 
       },
       allowNull: false,
@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
       validate: {
         isNumeric: {
           args: true,
-          msg: 'Must be contains a number greater than 0',
+          msg: 'Must contain a number greater than 0',
           min: 0
         },
         isGreater(value) {

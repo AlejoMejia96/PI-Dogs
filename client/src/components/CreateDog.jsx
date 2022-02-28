@@ -32,8 +32,8 @@ export default function CreateDog(){
         if(!input.name){
             error.name = 'Name is required';
         }
-        if(!/^[a-zA-Z: -_!'&()]+$/.test(input.name)) {
-            error.name = "Invalid character";
+        else if(!/^[a-zA-Z\s]*$/.test(input.name)) {
+            error.name = "Must contain letters and spaces only";
         }
         if(!input.heightMin){
             error.heightMin = 'Height Min is required';
@@ -127,11 +127,11 @@ export default function CreateDog(){
             <form className='form' onSubmit={(e) => handleSubmit(e)}>
                 <div style={{width: '50%', float: 'left'}}> 
                     <div className='nombre'>
-                        <h2 className='tnom'>Name</h2>
+                        <h2 className='tnom'>Name*</h2>
                         <input className='nom'
                         type='text'
                         value={input.name}
-                        placeholder='Enter name without numbers or symbols'
+                        placeholder='Enter letters and spaces only'
                         name='name'
                         onChange={(e) => handleChangeInput(e)}
                         autoComplete="off"
@@ -139,22 +139,22 @@ export default function CreateDog(){
                         {error.name && <p className='err'>{error.name}</p>}
                     </div>
                     <div  className='altmin'>
-                        <h2 className='taltmin'>Height</h2>
+                        <h2 className='taltmin'>Height*</h2>
                         <span>
-                            <label>Min </label>
+                            <label>Min* </label>
                             <input className='amin'
                             type='text'
                             value={input.heightMin}
-                            placeholder='Enter integers only'
+                            placeholder='Enter numbers only'
                             name='heightMin'
                             onChange={(e) => handleChangeInput(e)}
                             autoComplete="off"
                             />
-                            <label>Max </label>
+                            <label>Max* </label>
                             <input className='amax'
                             type='text'
                             value={input.heightMax}
-                            placeholder='Enter integers only'
+                            placeholder='Enter numbers only'
                             name='heightMax'
                             onChange={(e) => handleChangeInput(e)}
                             autoComplete="off"
@@ -164,22 +164,22 @@ export default function CreateDog(){
                         {error.heightMax && <p className='err'>{error.heightMax}</p>}
                     </div>
                     <div className='pemin'>
-                        <h2 className='tpemin'>Weight</h2>
+                        <h2 className='tpemin'>Weight*</h2>
                         <span>
-                            <label>Min </label>
+                            <label>Min* </label>
                             <input className='pmin'
                             type='text'
                             value={input.weightMin}
-                            placeholder='Enter integers only'
+                            placeholder='Enter numbers only'
                             name='weightMin'
                             onChange={(e) => handleChangeInput(e)}
                             autoComplete="off"
                             />
-                            <label>Max </label>
+                            <label>Max* </label>
                             <input className='pmax'
                             type='text'
                             value={input.weightMax}
-                            placeholder='Enter integers only'
+                            placeholder='Enter numbers only'
                             name='weightMax'
                             onChange={(e) => handleChangeInput(e)}
                             autoComplete="off"
@@ -189,11 +189,11 @@ export default function CreateDog(){
                         {error.weightMax && <p className='err'>{error.weightMax}</p>}
                     </div>
                     <div className='lifes'>
-                        <h2 className='tlifes'>Lifespan</h2>
+                        <h2 className='tlifes'>Lifespan*</h2>
                         <input className='life'
                         type='text'
                         value={input.lifespan}
-                        placeholder='Enter lifespan'
+                        placeholder='00 - 99 years'
                         name='lifespan'
                         onChange={(e) => handleChangeInput(e)}
                         autoComplete="off"
@@ -204,6 +204,9 @@ export default function CreateDog(){
                         <span> 
                         <Link to= '/home'><button className='goback'>Go back</button></Link>          
                         <button className='guardar' type='submit' disabled={Object.keys(error).length > 0 ? true : false}>Create</button>
+                        </span>
+                        <span>
+                            <h3>Fields marked with * are required</h3>
                         </span>
                     </div>
                 </div>

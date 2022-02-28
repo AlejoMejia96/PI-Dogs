@@ -24,3 +24,11 @@
     background-color: rgba(231, 146, 49, 0.9);
     border: 0px;
     }
+
+.paginationbot:hover {
+    background: rgba(228, 124, 5);
+}    
+
+.paginationbot:active {
+    background: rgba(228, 124, 5);
+}
