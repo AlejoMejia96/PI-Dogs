@@ -1,6 +1,7 @@
 const axios = require('axios');
 const { Dog, Temperament } = require('../db.js');
 
+//--------------------------------DB------------------------------------------
 
 const getDogsfromDB = async() => {
     try {
@@ -30,11 +31,12 @@ const getDogsfromDB = async() => {
             });
             return infoDB;
     } catch(error){
-        console.log(error.mensaje);
+        console.log(error);
     }
     
 };
 
+//--------------------------------------API-------------------------------------
 
 const getDogsfromApi = async() => {
     const getdataDogsApi = await axios.get('https://api.thedogapi.com/v1/breeds');
@@ -55,7 +57,7 @@ const getDogsfromApi = async() => {
     return dataDogsApi;
 };
 
-
+//----------------------------toda la info-------------------------------------
 
 const getAllDogs = async () => {
     const apiInfoDog = await getDogsfromApi();

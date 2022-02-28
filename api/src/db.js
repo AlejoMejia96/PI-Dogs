@@ -1,5 +1,5 @@
-require('dotenv').config();
-const { Sequelize } = require('sequelize');
+require('dotenv').config(); //modulo para .env
+const { Sequelize } = require('sequelize'); 
 const fs = require('fs');
 const path = require('path');
 const {

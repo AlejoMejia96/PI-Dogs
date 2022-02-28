@@ -4,9 +4,24 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
     sequelize.define('temperament', {
-        temperament: {
+        temperament: {                  //atributo
             type: DataTypes.STRING,
             allowNull: true,
         },
     },{timestamps: false});
 };
+/* 
+const {Model, DataTypes} = require('sequelize');
+
+class Temperament extends Model {}
+Temperament.init({
+    temperament: {                     //atributo
+        type: DataTypes.STRING,
+        allowNull: true,
+    }
+}, {
+    sequelize, // Instancia de conexión
+    modelName: 'Temperament' //nombre del modelo
+});
+
+module.exports = Temperament; */

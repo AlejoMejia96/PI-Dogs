@@ -12,11 +12,13 @@ const { getAllDogs, getDogsfromApi } = require('./controllers.js')
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
+//----------------------------------------------------------------------------
+
 router.get('/dogs', async (req, res) => {
     const { name } = req.query;
     try{
         let dogsTotal = await getAllDogs();
-        if(name){
+        if(name) {
             let dogName = await dogsTotal.filter(e => e.name.
                 toLowerCase().includes(name.toLowerCase()));
             dogName.length ? 
@@ -26,23 +28,30 @@ router.get('/dogs', async (req, res) => {
             res.status(200).send(dogsTotal)
         }
     } catch(error){
-        console.log(error.message);
+        console.log(error);
     }
 });
 
+//----------------------------------------------------------------------------
 
 router.get('/dogs/:idRaza', async (req, res) => {
     const idRaza = req.params.idRaza;
-    
-    let dogsTotal = await getAllDogs();
-    if(idRaza){
-        let dogId = await dogsTotal.filter(e => e.id == idRaza);
-        dogId.length ? 
-            res.status(200).json(dogId) :
-            res.status(404).send('Id does not exist')
+    try {
+        let dogsTotal = await getAllDogs();
+        if(idRaza){
+            let dogId = await dogsTotal.filter(e => e.id == idRaza);
+            dogId.length ? 
+                res.status(200).json(dogId) :
+                res.status(404).send('Id does not exist')
+        } else {
+            res.status(200).send(dogsTotal)
+        }
+    } catch(error){
+        console.log(error);
     }
 })
 
+//----------------------------------------------------------------------------
 
 router.get('/temperament', async (req, res) => {
         try{
@@ -86,9 +95,11 @@ router.get('/temperament', async (req, res) => {
             });
             res.send(allTemperaments);
         } catch (error){
-            console.log(error.message);
+            console.log(error);
         }
 });
+
+//----------------------------------------------------------------------------
 
 router.post('/dog', async (req, res) => {
     let { name,
@@ -108,12 +119,12 @@ router.post('/dog', async (req, res) => {
     if(name && heightMin && heightMax && weightMin &&
         weightMax && lifespan && temperament && image){
             let dogCreated = await Dog.create({
-                name:name,
-                heightMax:parseInt(heightMax),
-                heightMin:parseInt(heightMin),
-                weightMax:parseInt(weightMax),
-                weightMin:parseInt(weightMin),
-                lifespan,
+                name: name,
+                heightMax: parseInt(heightMax),
+                heightMin: parseInt(heightMin),
+                weightMax: parseInt(weightMax),
+                weightMin: parseInt(weightMin),
+                lifespan: lifespan,
                 image: image,
                 createdInDb: createdInDb,
             })
