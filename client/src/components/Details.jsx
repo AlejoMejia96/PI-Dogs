@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../actions/index';
 import { useEffect } from 'react';
 import Loading from './Loading';
-import './Details.css';
+import '../styles/Details.css';
 
 export default function Details(){
     const allDetails = useSelector((state) => state.dogDetails);
@@ -14,7 +14,7 @@ export default function Details(){
 
     useEffect(() => {
         dispatch(getDetails(id));
-    }, [dispatch]);
+    });
 
 
     return (

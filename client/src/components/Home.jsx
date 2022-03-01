@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDogs, listOfTemperaments } from '../actions/index';
 import { Link } from 'react-router-dom';
-import './Home.css';
+import '../styles/Home.css';
 import Card from './Card';
 import Pagination from './Pagination';
 import Loading from './Loading';
@@ -41,12 +41,12 @@ export default function Home() {
             <div className='create_dog'>
                 <Link to='/dog'>
                     <button className='crea'>
-                        <div class="c1"></div>
-                        <div class="c2"></div>
-                        <div class="c3"></div>
-                        <div class="c4"></div>
-                        <div class="b1">
-                            <div class="b2">
+                        <div className="c1"></div>
+                        <div className="c2"></div>
+                        <div className="c3"></div>
+                        <div className="c4"></div>
+                        <div className="b1">
+                            <div className="b2">
                             Create Dog
                             </div>
                         </div>
@@ -76,6 +76,7 @@ export default function Home() {
                     currentDog.map(e => {
                         return (
                             <Card 
+                                key={e.id}
                                 id={e.id}
                                 name={e.name} 
                                 image={e.image} 

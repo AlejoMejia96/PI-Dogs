@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { postDog, listOfTemperaments } from '../actions/index';
 import { useDispatch, useSelector } from 'react-redux';
-import './CreateDog.css';
+import '../styles/CreateDog.css';
 
 export default function CreateDog(){
     const dispatch = useDispatch();

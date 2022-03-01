@@ -20,15 +20,11 @@ function rootReducer (state = initialState, action){
                 temperaments: action.payload
             }
         case 'FILTER_BY_TEMPERAMENT':
-            const allDoggs = state.allDogsEver;
+            const allDoggs = [...state.allDogsEver];
             const temDogFiltred = action.payload === 'All' 
             ? allDoggs : allDoggs.filter(e => {
                 if(e.temperament){
                     return e.temperament.includes(action.payload);
-                }
-                if(e.temperaments){
-                    const temp = e.temperaments.map(e => e.temperament);
-                    return temp.includes(action.payload);
                 }
                 return null
             })

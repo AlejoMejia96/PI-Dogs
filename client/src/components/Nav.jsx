@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDogs, listOfTemperaments, filterByTemp, filterByCreated,
     orderByName, orderByWeight } from '../actions/index';
 import Loading from './Loading';
-import './Nav.css';
+import '../styles/Nav.css';
 
 export default function Nav(){
     const dispatch = useDispatch();
@@ -57,7 +57,9 @@ export default function Nav(){
                 {temperaments.length > 0 ? (
                     temperaments.map(e => {
                         return (
-                            <option value={e.temperament}>{e.temperament}</option>
+                            <option value={e.temperament}
+                            key={e.temperament}
+                            >{e.temperament}</option>
                         )
                     })
                 ) : (
