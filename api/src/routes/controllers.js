@@ -10,7 +10,7 @@ const getDogsfromDB = async() => {
                 model: Temperament,
                 attributes: ['temperament'],
                 through: {
-                    attributes: [],
+                    attributes: [],     // Valida que solo traiga los atributos pedidos del modelo Temperament
                 },
             },
         });
@@ -57,7 +57,7 @@ const getDogsfromApi = async() => {
     return dataDogsApi;
 };
 
-//----------------------------toda la info-------------------------------------
+//----------------------------Uno toda la info-------------------------------------
 
 const getAllDogs = async () => {
     const apiInfoDog = await getDogsfromApi();

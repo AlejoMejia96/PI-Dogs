@@ -12,7 +12,15 @@ const { getAllDogs, getDogsfromApi } = require('./controllers.js')
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-//----------------------------------------------------------------------------
+//------------------------------RUTAS-----------------------------------------
+
+//GET /dogs:
+//Obtener un listado de las razas de perro
+//Debe devolver solo los datos necesarios para la ruta principal
+
+//GET /dogs?name="...":
+//Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
+//Si no existe ninguna raza de perro mostrar un mensaje adecuado
 
 router.get('/dogs', async (req, res) => {
     const { name } = req.query;
@@ -34,6 +42,11 @@ router.get('/dogs', async (req, res) => {
 
 //----------------------------------------------------------------------------
 
+//GET /dogs/{idRaza}:
+//Obtener el detalle de una raza de perro en particular
+//Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
+//Incluir los temperamentos asociados
+
 router.get('/dogs/:idRaza', async (req, res) => {
     const idRaza = req.params.idRaza;
     try {
@@ -42,7 +55,7 @@ router.get('/dogs/:idRaza', async (req, res) => {
             let dogId = await dogsTotal.filter(e => e.id == idRaza);
             dogId.length ? 
                 res.status(200).json(dogId) :
-                res.status(404).send('Id does not exist')
+                res.status(404).send('There is not a dog with that id')
         } else {
             res.status(200).send(dogsTotal)
         }
@@ -53,6 +66,11 @@ router.get('/dogs/:idRaza', async (req, res) => {
 
 //----------------------------------------------------------------------------
 
+//GET /temperament:
+//Obtener todos los temperamentos posibles
+//En una primera instancia deberán obtenerlos desde la API externa 
+//y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
+
 router.get('/temperament', async (req, res) => {
         try{
             const apiTemp = await getDogsfromApi();
@@ -62,7 +80,7 @@ router.get('/temperament', async (req, res) => {
             const temperaments = await apiTemp.map(e =>
             (e.temperament)); 
 
-            /*temperaments=['Active, Playful, Adveturous',
+            /*temperaments = ['Active, Playful, Adveturous',
             'Curious, Funny, Fearless',
             'Brave, Playful, Intelligent, Stubborn'] */
 
@@ -72,8 +90,11 @@ router.get('/temperament', async (req, res) => {
 
             const arrayTemp = temperaments.map((temp) => 
             (temp ? temp.split(', ') : null)).flat();
+            /* .split ---> [["Active", "Playful", "Adveturous"],
+            ["Curious", "Funny", "Fearless"],
+            ["Brave", "Playful", "Intelligent", "Stubborn"]] */ 
 
-            /* arrayTemp=["Active", "Playful", "Adveturous", "Curious",
+            /* arrayTemp = ["Active", "Playful", "Adveturous", "Curious",
             "Funny", "Fearless", "Brave", "Playful", 
             "Intelligent", "Stubborn"] */
             
@@ -82,7 +103,10 @@ router.get('/temperament', async (req, res) => {
 
             const temperamentUnique = [...new Set(arrayTemp)];
 
-            /* temperamentUnique=["Active", "Playful", "Adveturous", "Curious", "Funny",
+            /* new Set(arrayTemp) ---> {"Active", "Playful", "Adventurous", "Curious",
+            "Funny", "Fearless", "Brave", "Intelligent", "Stubborn"} */
+
+            /* temperamentUnique = ["Active", "Playful", "Adveturous", "Curious", "Funny",
             "Fearless", "Brave", "Intelligent", "Stubborn"] */
             
             temperamentUnique.filter(temp => temp !== null).forEach(
@@ -101,6 +125,11 @@ router.get('/temperament', async (req, res) => {
 
 //----------------------------------------------------------------------------
 
+//POST /dog:
+//Recibe los datos recolectados desde el formulario controlado
+//de la ruta de creación de raza de perro por body
+//Crea una raza de perro en la base de datos
+
 router.post('/dog', async (req, res) => {
     let { name,
         heightMin,
@@ -112,13 +141,13 @@ router.post('/dog', async (req, res) => {
         image, 
         createdInDb } = req.body;
 
-    if(!image){
+    if(!image){             // Toma imagen por default cuando no h imagen por body
         image = 'https://media.istockphoto.com/vectors/dog-black-silhouette-isolated-on-white-background-sitting-pet-simple-vector-id1265211191?k=20&m=1265211191&s=612x612&w=0&h=S3FTUJHcxDTP5dp_qRWwmd51djcS3JOEEl_hXLIQj3g=';
     }
 
     if(name && heightMin && heightMax && weightMin &&
         weightMax && lifespan && temperament && image){
-            let dogCreated = await Dog.create({
+            let dogCreated = await Dog.create({             // Se crea la nueva raza de perro
                 name: name,
                 heightMax: parseInt(heightMax),
                 heightMin: parseInt(heightMin),
@@ -129,10 +158,10 @@ router.post('/dog', async (req, res) => {
                 createdInDb: createdInDb,
             })
 
-            let temperamentDB = await Temperament.findAll({
+            let temperamentDB = await Temperament.findAll({ // Se traen los temperamentos que pide el usuario
                 where: {temperament : temperament },
             });
-            dogCreated.addTemperament(temperamentDB);
+            dogCreated.addTemperament(temperamentDB);       // Se agregan los temperamentos al perro creado
             res.status(200).send('Dog sucessfully created');
 
     } else{

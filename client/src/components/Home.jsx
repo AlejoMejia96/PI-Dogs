@@ -12,20 +12,22 @@ import Nav from './Nav';
 
 
 export default function Home() {
-    const dispatch = useDispatch();
-    const allDogs = useSelector ((state) => state.dogs);
+    const dispatch = useDispatch();             // mapDispatchToProps para Hooks. Crea una instancia de la función
+    const allDogs = useSelector ((state) => state.dogs);     // mapStateToProps para Hooks. Lee los datos de la store.
     
-    const [currentPage, setCurrentPage] = useState(1);
-    const [dogsPerPage] = useState(8);
-    const indexOfLastDog = currentPage * dogsPerPage;
-    const indexOfFirstDog = indexOfLastDog - dogsPerPage;
-    const currentDog = allDogs.slice(indexOfFirstDog, indexOfLastDog);
+
+    /* Paginado */
+    const [currentPage, setCurrentPage] = useState(1);              //pagina actual
+    const [dogsPerPage] = useState(8);                              //8 perros por página
+    const indexOfLastDog = currentPage * dogsPerPage;               //índice último perro
+    const indexOfFirstDog = indexOfLastDog - dogsPerPage;           //índice primer perro
+    const currentDog = allDogs.slice(indexOfFirstDog, indexOfLastDog);  //Perros de la página actual  Pág.1 ---> 0-7
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
     
-    useEffect (() => {
+    useEffect (() => {                                      //para ejecutar al montar el componente
         dispatch(listOfTemperaments());
         dispatch(getDogs());
     }, [dispatch]);

@@ -1,9 +1,9 @@
 
 const initialState = {
-    dogs : [],
-    temperaments: [],
-    allDogsEver: [],
-    dogDetails: []
+    dogs : [],  //estado que se modificará según actions
+    temperaments: [], //estado con todos los temperamentos
+    allDogsEver: [], //estado con todas las razas siempre
+    dogDetails: [] //estado con la info de detalles de perros
 };
 
 function rootReducer (state = initialState, action){

@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
     sequelize.define('temperament', {
-        temperament: {                  //atributo
+        temperament: {                  //Atributo donde se almacenarán los temperamentos de la API
             type: DataTypes.STRING,
             allowNull: true,
         },

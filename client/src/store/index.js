@@ -7,3 +7,6 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk
 
 export default store;
 
+
+/* thunk ---> permite enviar más de una acción a la vez (M) */
+/* composeWithDevTools ---> trae las herramientas de Redux */

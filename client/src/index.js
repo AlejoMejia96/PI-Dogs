@@ -8,8 +8,8 @@ import store from './store/index';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
+  <Provider store={store}>    {/* conecta el estado de Redux con cada componente de React */}
+    <BrowserRouter>             {/* declara rutas individuales dentro de la app */}
   <React.StrictMode>
     <App />
   </React.StrictMode>

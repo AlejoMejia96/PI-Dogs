@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       validate: {
         is:  {
-          args: /^[a-zA-Z\s]*$/,
+          args: /^[a-zA-Z\s]*$/,  // ReGex que verifica solo el uso de letras y espacios
           msg: 'Must contain letters and spaces only'
         } 
       },
@@ -28,9 +28,9 @@ module.exports = (sequelize) => {
         isNumeric: {
           args: true,
           msg: 'Must contain a number greater than 0',
-          min: 0
+          min: 0    // Solo permite valores positivos
         },
-        isGreater(value) {
+        isGreater(value) {  //  Verifica que la altura mínima no sea mayor a la máxima
           if (parseInt(value) >= parseInt(this.heightMax)) {
             throw new Error('Height Min cannot be greater than Height Max');
             }
@@ -45,9 +45,9 @@ module.exports = (sequelize) => {
         isNumeric: {
           args: true,
           msg: 'Must be contains a number greater than 0',
-          min: 0
+          min: 0  // Solo permite valores positivos
         },
-        isLower(value) {
+        isLower(value) {  //  Verifica que la altura mínima no sea mayor a la máxima
           if (parseInt(value) <= parseInt(this.heightMin)) {
             throw new Error('Height Min cannot be greater than Height Max');
             }
@@ -62,14 +62,14 @@ module.exports = (sequelize) => {
         isNumeric: {
           args: true,
           msg: 'Must be contains a number greater than 0',
-          min: 0
+          min: 0  // Solo permite valores positivos
         },
-        isGreater(value) {
+        isGreater(value) {  //  Verifica que el peso mínimo no sea mayor al máximo
           if (parseInt(value) >= parseInt(this.weightMax)) {
             throw new Error('Weight Min cannot be greater than Weight Max');
             }
           },
-        min: 0
+        min: 0  // Solo permite valores positivos
       },
       allowNull: false,
     },
@@ -80,9 +80,9 @@ module.exports = (sequelize) => {
         isNumeric: {
           args: true,
           msg: 'Must be contains a number greater than 0',
-          min: 0
+          min: 0  // Solo permite valores positivos
         },
-        isLower(value) {
+        isLower(value) {  //  Verifica que el peso mínimo no sea mayor al máximo
           if (parseInt(value) <= parseInt(this.weightMin)) {
             throw new Error('Weight Min cannot be greater than Weight Max');
             }
@@ -94,13 +94,13 @@ module.exports = (sequelize) => {
     lifespan : {
       type: DataTypes.STRING,
       validate: {
-        len: [0,20],
+        len: [0,20],  // Restringe la cantidad de caracteres 
       },
     },
 
     image : {
       type: DataTypes.STRING(3000),
-      validate: {
+      validate: {                   // ReGex que verifica la url de la imagen
         is: {
           args: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g,
           msg: 'Enter a valid URL',
@@ -109,7 +109,7 @@ module.exports = (sequelize) => {
       allowNull: true
     },
 
-    createdInDb : {
+    createdInDb : {                 // Se usa para el filtrado de los creados y la API
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
