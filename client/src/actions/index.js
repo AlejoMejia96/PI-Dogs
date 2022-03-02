@@ -119,3 +119,14 @@ export function getDetails(id){
         }
     }
 }
+
+//---------------------------------------------------------------------------
+
+//action que renderiza la página page
+
+export function setCurrentPage(page) {
+    return {
+    type: "SET_PAGE",
+    payload: parseInt(page),
+    };
+}

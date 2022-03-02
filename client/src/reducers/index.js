@@ -37,13 +37,27 @@ function rootReducer (state = initialState, action){
                 ...state,
             }
         case 'FILTER_BY_CREATED':
-            const filterCreated = action.payload === 'dog_db' ? 
-            state.allDogsEver.filter(e => e.createdInDb) : state.allDogsEver.filter(e => !e.createdInDb);
-
+            let db = state.allDogsEver.filter(e => e.createdInDb);
+            let api = state.allDogsEver.filter(e => !e.createdInDb);
+            if (action.payload === 'dog_db'){
+                if(!db.length){
+                    alert('There is not dogs created yet');
+                    return {
+                        ...state,
+                        dogs: state.allDogsEver
+                    }
+                } else {
+                    return {
+                        ...state,
+                        dogs: db
+                    }
+                }
+            }
             return {
                 ...state,
-                dogs: action.payload === 'all_dogs' ? state.allDogsEver : filterCreated
+                dogs: action.payload === 'all_dogs' ? state.allDogsEver : api,
             }
+            
         case 'ORDER_BY_NAME':
             const allDogggs = state.allDogsEver;
             const arrOrd = action.payload === 'asc_alf' ?
@@ -96,6 +110,11 @@ function rootReducer (state = initialState, action){
             return{
                 ...state,
                 dogDetails: action.payload
+            }
+        case "SET_PAGE":
+            return {
+            ...state,
+            currentPage: action.payload
             }
         default:
         return state;
