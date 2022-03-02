@@ -25,7 +25,6 @@ export default function Nav(){
     function handleFilterByTemp(e){
         e.preventDefault();
         dispatch(filterByTemp(e.target.value));
-        setCurrentPage(1);
     }
 
     function handleOrderByName(e){
