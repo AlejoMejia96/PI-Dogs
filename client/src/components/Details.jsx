@@ -44,7 +44,7 @@ export default function Details(){
                 </div>    
                     ) : (
                         <div>
-                            <Loading />
+                            <Loading/>
                         </div>
                     )} 
                 <Link to='/home'><button className='botback'>Back</button></Link>     

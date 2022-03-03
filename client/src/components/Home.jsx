@@ -27,11 +27,11 @@ export default function Home() {
         setCurrentPage(pageNumber)
     }
     
-    useEffect (() => {                                      //para ejecutar al montar el componente
+    useEffect (() => {                                      
         dispatch(listOfTemperaments());
         dispatch(getDogs());
     }, [dispatch]);
-
+//------------------------------------------------------------------------------------------
     function handleClick(e){
         e.preventDefault();
         dispatch(getDogs());
@@ -70,7 +70,6 @@ export default function Home() {
                     dogsPerPage={dogsPerPage}
                     allDogs={allDogs.length}
                     paginate={paginate}
-                    currentPage={currentPage}
                 />
             </div>
             <div className='cards'>

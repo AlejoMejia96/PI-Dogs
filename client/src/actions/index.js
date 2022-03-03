@@ -96,7 +96,6 @@ export function getNameDogs(name){
 export function postDog(payload){
     return async function(dispatch){
         var json = await axios.post('http://localhost:3001/dog', payload);
-        console.log(json)
         return json;
     }
 }
@@ -118,15 +117,4 @@ export function getDetails(id){
             return alert('Dog not found. Try again')
         }
     }
-}
-
-//---------------------------------------------------------------------------
-
-//action que renderiza la página page
-
-export function setCurrentPage(page) {
-    return {
-    type: "SET_PAGE",
-    payload: parseInt(page),
-    };
 }

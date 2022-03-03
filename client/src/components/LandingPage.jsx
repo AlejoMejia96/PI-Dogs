@@ -4,7 +4,6 @@ import '../styles/LandingPage.css';
 
 export default function LandingPage (){
     return(
-
         <div className='title'>
             <div className='title2'>
             <h1 className='intro'>Welcome to my Dogs App!</h1>

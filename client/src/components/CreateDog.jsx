@@ -72,7 +72,7 @@ export default function CreateDog(){
         }
         return error;
     }
-
+//------------------------------------------------------------------------------------------
     const handleChangeInput = (e) => {
         e.preventDefault();
         setInput(input => {
@@ -85,20 +85,20 @@ export default function CreateDog(){
         return newInput;
         })
     }
-
+//------------------------------------------------------------------------------------------
     function handleSelect(e){
         setInput({
             ...input,
             temperament: [...input.temperament, e.target.value]
         });
     }
-
+//------------------------------------------------------------------------------------------
     function handleDelete(e){
         setInput({
             temperament: input.temperament.filter(tem => tem !== e)
         });
     }
-
+//------------------------------------------------------------------------------------------
     function handleSubmit(e){
         e.preventDefault();
         if(input.name && input.heightMin && input.heightMax && input.weightMin
