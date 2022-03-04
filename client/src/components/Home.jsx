@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, listOfTemperaments } from '../actions/index';
+import { getDogs, listOfTemperaments } from '../actions/index';    
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 import Card from './Card';
@@ -12,8 +12,8 @@ import Nav from './Nav';
 
 
 export default function Home() {
-    const dispatch = useDispatch();             // mapDispatchToProps para Hooks. Crea una instancia de la función
-    const allDogs = useSelector ((state) => state.dogs);     // mapStateToProps para Hooks. Lee los datos de la store.
+    const dispatch = useDispatch();             // mapDispatchToProps para Hooks. Crea una instancia de la función para despachar actions.
+    const allDogs = useSelector ((state) => state.dogs);     // mapStateToProps para Hooks. Retorna los datos de la store que se necesiten.
     
 
     /* Paginado */

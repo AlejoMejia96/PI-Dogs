@@ -225,13 +225,14 @@ export default function CreateDog(){
                     <div className='temperi'>
                         <h2 className='temps'>Temperaments</h2> <br/>
                         <select className='temp' onChange={(e) => handleSelect(e)}>
-                            {temperaments?.map((temp) => {
-                                return(
-                                    <option 
-                                    key={temp.id} 
-                                    value={temp.temperament}>
-                                    {temp.temperament}</option>
-                                );
+                            <option value='All'>Temperaments</option>
+                                {temperaments?.map((temp) => {
+                                    return(
+                                        <option 
+                                        key={temp.id} 
+                                        value={temp.temperament}>
+                                        {temp.temperament}</option>
+                                    );
                             })}
                         </select>
                         <div className='ts'>

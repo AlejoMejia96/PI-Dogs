@@ -21,7 +21,7 @@ export function listOfTemperaments(){
         var json = await axios.get('http://localhost:3001/temperament');
         return dispatch({
             type: 'GET_TEMPERAMENTS',
-            payload:json.data
+            payload: json.data
         })
     }
 }
@@ -94,7 +94,7 @@ export function getNameDogs(name){
 //action que recibe la info con el perro a crear
 
 export function postDog(payload){
-    return async function(dispatch){
+    return async function(){
         var json = await axios.post('http://localhost:3001/dog', payload);
         return json;
     }
