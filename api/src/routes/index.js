@@ -141,7 +141,7 @@ router.post('/dog', async (req, res) => {
         image, 
         createdInDb } = req.body;
 
-    if(!image){             // Toma imagen por default cuando no h imagen por body
+    if(!image){             // Toma imagen por default cuando no hay imagen por body
         image = 'https://media.istockphoto.com/vectors/dog-black-silhouette-isolated-on-white-background-sitting-pet-simple-vector-id1265211191?k=20&m=1265211191&s=612x612&w=0&h=S3FTUJHcxDTP5dp_qRWwmd51djcS3JOEEl_hXLIQj3g=';
     }
 

@@ -93,6 +93,7 @@ export default function Home() {
                         </div>     
                     )}
             </div>
+            <p style={{'background-color': 'rgba(231, 146, 49, 0.9)', 'color': 'white', 'display': 'flex', 'justifyContent': 'center', 'marginBottom' : '0', 'paddingTop': '2px', 'paddingBottom': '2px'}}>Application made by Alejandro Quintero Mejía  © All rights reserved.</p>
         </div>
     );
 }

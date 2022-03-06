@@ -87,9 +87,10 @@ export default function CreateDog(){
     }
 //------------------------------------------------------------------------------------------
     function handleSelect(e){
+        
         setInput({
             ...input,
-            temperament: [...input.temperament, e.target.value]
+            temperament: [...new Set([...input.temperament, e.target.value])]
         });
     }
 //------------------------------------------------------------------------------------------
@@ -225,7 +226,7 @@ export default function CreateDog(){
                     <div className='temperi'>
                         <h2 className='temps'>Temperaments</h2> <br/>
                         <select className='temp' onChange={(e) => handleSelect(e)}>
-                            <option value='All'>Temperaments</option>
+                            <option></option>
                                 {temperaments?.map((temp) => {
                                     return(
                                         <option 
