@@ -140,7 +140,7 @@ export default function CreateDog(){
                         {error.name && <p className='err'>{error.name}</p>}
                     </div>
                     <div  className='altmin'>
-                        <h2 className='taltmin'>Height*</h2>
+                        <h2 className='taltmin'>Height* (cm)</h2>
                         <span>
                             <label>Min* </label>
                             <input className='amin'
@@ -165,7 +165,7 @@ export default function CreateDog(){
                         {error.heightMax && <p className='err'>{error.heightMax}</p>}
                     </div>
                     <div className='pemin'>
-                        <h2 className='tpemin'>Weight*</h2>
+                        <h2 className='tpemin'>Weight* (kg)</h2>
                         <span>
                             <label>Min* </label>
                             <input className='pmin'

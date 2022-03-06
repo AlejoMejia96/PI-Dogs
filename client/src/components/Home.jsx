@@ -56,6 +56,7 @@ export default function Home() {
                 </Link>
             </div>
             <div className='load'>
+                <button className='about'>Enjoy!</button>
                 <button onClick={e => handleClick(e)}
                 className='ref'>Refresh</button>
             </div>
@@ -93,7 +94,8 @@ export default function Home() {
                         </div>     
                     )}
             </div>
-            <p style={{'background-color': 'rgba(231, 146, 49, 0.9)', 'color': 'white', 'display': 'flex', 'justifyContent': 'center', 'marginBottom' : '0', 'paddingTop': '2px', 'paddingBottom': '2px'}}>Application made by Alejandro Quintero Mejía  © All rights reserved.</p>
+            <p style={{'background-color': 'rgba(231, 146, 49)', 'color': 'white', 'display': 'flex', 'justifyContent': 'center', 'marginBottom' : '0px', 'paddingTop': '2px', 'paddingBottom': '5px'}}>
+                <a style={{'textDecoration': 'none', 'color': 'white'}} href='https://www.linkedin.com/in/alejandro-quintero-mejia-652232225/'>Made by Alejandro Quintero Mejía © All rights reserved.</a></p>
         </div>
     );
 }
